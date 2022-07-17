@@ -13,20 +13,20 @@ class RoiCalc:
                     val = int(input(my_string))
                     return val
                 except ValueError:  #should I use TypeError instead of ValueError?
-                    print('Please only input digits')
+                    print('Enter digits only.')
 
 
     def income(self):
         input("\nTo begin calculating your cash on cash ROI, press enter: ")
         self.rental_income_month = self.try_catch("Enter your total monthly rental income: $")                                                                                                                      
         while True:
-            go_back = input(f"Your total monthly income from this rental property is ${self.rental_income_month}.\nPress Y to confirm or N to change: ")
+            go_back = input(f"Your total monthly income from this rental property is ${self.rental_income_month}.\nEnter Y to confirm or N to change: ")
             if go_back.lower() == "y":
                 return self.expenses()
             elif go_back.lower() == "n":
                 self.rental_income_month = self.try_catch("Enter your total monthly rental income: $")
             else:
-                print("Invalid input")
+                print("Invalid input. Enter Y to confirm or N to change:")
 
             
     def expenses(self):
@@ -39,7 +39,7 @@ class RoiCalc:
         self.total_expenses = sum(expense_dict.values())
         print(f"Your total monthly expenses: ${self.total_expenses}.")
         self.cash_flow = self.rental_income_month - self.total_expenses
-        print(f"Your total monthly cash flow is ${self.cash_flow}.")
+        print(f"Your total monthly cash flow: ${self.cash_flow}.")
         self.return_on()
 
     def return_on(self):
@@ -55,7 +55,5 @@ class RoiCalc:
         print(f"Your cash on cash ROI is {round(self.roi, 3)}%.")
 
 
-new = RoiCalc()
-
-new.income()
-
+my_property  = RoiCalc()
+my_property.income()
